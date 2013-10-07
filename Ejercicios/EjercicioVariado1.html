@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Ejercicio 1.1.4 Libros web</title>
+        
+        <script type="text/javascript">
+        	var valores = [true, 5, false, "hola", "adios", 2];
+        	
+        	//Ejercicio a
+        	if (valores[3]>valores[4]){
+        		alert("El valor 3:"+valores[3]+" es mayor que valor 4;"+valores[4]);
+        	}else{
+        		alert("El valor 4:"+valores[4]+" es mayor que valor 3;"+valores[3]);
+        	}
+        	
+        	///Ejercicio b obtener valores true false con los valores booleanos del array
+        	var valort = valores[0]||valores[2];
+        	var valorf = valores[0]&&valores[2];
+        	alert(valort);
+       		alert(valorf);
+        	
+        	//Operaciones basicas
+        	var num1 = valores[1];
+			var num2 = valores[5];
+			 
+			var suma = num1 + num2;
+			alert(suma);
+			 
+			var resta = num1 - num2;
+			alert(resta);
+			 
+			var multiplicacion = num1 * num2;
+			alert(multiplicacion);
+			 
+			var division = num1 / num2;
+			alert(division);
+			 
+			var division_exacta = num1 % num2;
+			alert(division_exacta);	
+		 </script>
+        
+        
+    </head>
+    <body>
+        <h1>Ejercicio 1.1.4 Libros web</h1>
+    </body>
+</html>
+
