@@ -1,0 +1,227 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>New Web Project</title>
+        
+        <script type="text/javascript">
+        	
+        	/*Lenght propio*/
+        	
+        	function MiLength (cadenaTexto){
+        		var arrayCadena = cadenaTexto.split("");
+        		var longitud = 0;
+        		
+        		for (i in arrayCadena){
+        			longitud ++;
+        		}
+        		
+        		return longitud;
+        		
+        	}
+        	
+        	var texto = "Hola me llamo cristian";
+        	var longitud = MiLength(texto);
+        	/*alert(longitud);*/
+        	
+        	/*-----------------------------------------------------------*/
+        	
+        	
+        	/*CharAt propio*/
+        	
+        	function MiCharAt(cadenaTexto, posicion){
+        		
+        		var caracter="";
+        		var arrayCadena = cadenaTexto.split("");
+        		var longitud = 0;
+        		
+        		/*
+        		for (i in arrayCadena){
+        			longitud ++;
+        		}
+        		*/
+        		var longitud = MiLength(cadenaTexto);
+        		
+        		for (var i = 0; i<longitud;i++){
+        			if (i == posicion){
+        				caracter = arrayCadena[i];
+        			}
+        		}
+        		
+        		return caracter;
+        		
+        	}
+        	
+        	var cadena2= "hola cristian";
+        	var posicion = 0;
+        	var caracter = MiCharAt(cadena2,posicion);
+        	/*alert(caracter);*/
+        	
+        	/*------------------------------------------------------------*/
+        	
+        	
+        	/*indexOf propio*/
+        	
+        	function MiIndexOf(cadenaTexto, caracter){
+        		var posicion = 0;
+        		var longitud = MiLength(cadenaTexto);
+        		var arrayCadena = cadenaTexto.split("");
+        		
+        		for (var i = 0; i<longitud;i++){
+        			if (arrayCadena[i] == caracter ){
+        				posicion = i;
+        				return posicion;
+        			}
+        		}
+        	}
+        	
+        	var cadena3="Hola holita";
+        	var caracter = "a";
+        	var posicionMiIndex = MiIndexOf(cadena3,caracter);
+        	/*alert(posicionMiIndex);*/
+        	
+        	/*------------------------------------------------------------*/
+        	
+        	/*lastIndexOf propio*/
+        	
+        	function MiLastIndexOf(cadenaTexto, caracter){
+        		var posicion = 0;
+        		var longitud = MiLength(cadenaTexto);
+        		var arrayCadena = cadenaTexto.split("");
+        		
+        		for (var i = 0; i<longitud;i++){
+        			if (arrayCadena[i] == caracter ){
+        				posicion = i;
+        			}
+        		}
+        		return posicion;
+        	}
+        	
+        	var cadena3="Hola holita";
+        	var caracter = "a";
+        	var posicionMiLastIndex = MiLastIndexOf(cadena3,caracter);
+        	/*alert(posicionMiLastIndex);*/
+        	
+        	/*------------------------------------------------------------*/
+        	
+        	/*Substring*/
+        	
+        	function MiSubstring(cadenaTexto, inicio, fin){
+        		var cadenaExtraida = "";
+        		var longitud = MiLength(cadenaTexto);
+        		var arrayCadena = cadenaTexto.split("");
+        		
+        		for (var i = inicio; i<fin;i++){
+        			cadenaExtraida+=arrayCadena[i];
+        		}
+        		return cadenaExtraida;
+        	}
+        	var cadena4="Hola holita";
+        	var posIni = 2;
+        	var posFin = 6;
+        	var MiCadenaExtraida = MiSubstring(cadena4,posIni,posFin);
+        	
+        	/*alert(MiCadenaExtraida);*/
+        	
+        	/*------------------------------------------------------------*/
+        	
+        	
+        	/*MiConcat*/
+        	
+        	function MiConcat(array1, array2){
+        		
+        		var longArray1=0;
+        		var longArray2=0;
+        		
+        		for (var i in array1){
+        			longArray1++;
+        		}
+        		
+        		for (var i in array2){
+        			longArray2++;
+        		}
+        		
+        		/*alert(longArray1);
+        		alert(longArray2);*/
+        		var longAux = longArray1+longArray2;
+        		
+        		var array3= new Array(longAux);
+        		
+    			for (var i = 0; i< longArray1;i++){
+    				array3[i] = array1[i];
+    			}
+        		
+        		var iAux = 0;
+        		for (var index = longArray1 ; index<longAux;index++ ){
+        			array3[index]=array2[iAux];
+        			iAux++;
+        		}
+        		return array3;
+        	}
+        	/*
+        	var array1 = [1, 2, 3];
+        	var array2 = [1, 2, 3];
+        	
+        	var array3 = MiConcat(array1,array2);
+        	
+        	for (var index = 0; index < array3.length;index++){
+        		alert(array3[index]);
+        	}*/
+        	/*------------------------------------------------------------*/
+        	//reverse
+        	
+        	function miReverse(array){
+     		var longitud=0;
+     		for(var i in array){
+     			longitud++;
+     		}
+     		alert(longitud);
+     		var array2=new Array(longitud);
+     		
+     		var a=longitud-1;
+     		for(var i=0;i<longitud;i++){
+     			array2[a]=array[i];
+     			a--;
+     		}
+     		return array2;
+     	}
+     	/*
+     	var dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+     	var array=miReverse(dias);
+     	for (var index = 0; index < array.length;index++){
+        		alert(array[index]);
+        }*/
+        	
+        	
+        	//reverseCadena
+        	
+        	function miReverseCadena(cadena){
+	     		var longitud=0;
+	     		for(var i in cadena){
+	     			longitud++;
+	     		}
+	     		/*alert(longitud);*/
+	     		
+	     		var palabra = "";
+	     		
+	     		for(var a=(longitud-1);a>=0;a--){
+	     			palabra+=cadena[a];
+	     			/*alert(palabra);*/
+	     		}
+	     		return palabra;
+     		}
+     	var dias = "Lunes";
+     	var cadenaRevertida = miReverseCadena(dias);
+     	alert(cadenaRevertida);
+        </script>
+        
+        
+        
+        
+    </head>
+    <body>
+        <h1>New Web Project Page</h1>
+    </body>
+</html>
+
