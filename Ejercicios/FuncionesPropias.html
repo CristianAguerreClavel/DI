@@ -9,7 +9,9 @@
         	
         	/*Lenght propio*/
         	
-        	function MiLength (cadenaTexto){
+        	function miLength(){
+        		var campoNombre = document.getElementById("nombre");
+        		var cadenaTexto = campoNombre.value;
         		var arrayCadena = cadenaTexto.split("");
         		var longitud = 0;
         		
@@ -17,21 +19,22 @@
         			longitud ++;
         		}
         		
-        		return longitud;
+        		alert("La longitud de la cadena es "+longitud);
         		
         	}
         	
-        	var texto = "Hola me llamo cristian";
-        	var longitud = MiLength(texto);
-        	/*alert(longitud);*/
         	
         	/*-----------------------------------------------------------*/
         	
         	
         	/*CharAt propio*/
         	
-        	function MiCharAt(cadenaTexto, posicion){
+        	function miCharAt(){
+        		var campoTexto = document.getElementById("cadenaCharAt");
+        		var campoPosicion = document.getElementById("posicionCharAt");
         		
+        		var cadenaTexto = campoTexto.value;
+        		var posicion = campoPosion.value;
         		var caracter="";
         		var arrayCadena = cadenaTexto.split("");
         		var longitud = 0;
@@ -49,21 +52,20 @@
         			}
         		}
         		
-        		return caracter;
+        		alert("En la cadena la posicion "+posicion+" contiene el caracter "+caracter);
         		
         	}
         	
-        	var cadena2= "hola cristian";
-        	var posicion = 0;
-        	var caracter = MiCharAt(cadena2,posicion);
-        	/*alert(caracter);*/
-        	
         	/*------------------------------------------------------------*/
-        	
         	
         	/*indexOf propio*/
         	
-        	function MiIndexOf(cadenaTexto, caracter){
+        	function miIndexOf(){
+        		var campoTexto=document.getElementById("cadenaIndexOf");
+        		var campoCaracter=document.getElementById("caracterIndexOf");
+        		var cadenaTexto = campoTexto.value;
+        		var caracter = campoCaracter.value;
+        		
         		var posicion = 0;
         		var longitud = MiLength(cadenaTexto);
         		var arrayCadena = cadenaTexto.split("");
@@ -71,15 +73,11 @@
         		for (var i = 0; i<longitud;i++){
         			if (arrayCadena[i] == caracter ){
         				posicion = i;
-        				return posicion;
+        				alert("El caracter se encuentra en la posicion "+ posicion);
+        				return;
         			}
         		}
         	}
-        	
-        	var cadena3="Hola holita";
-        	var caracter = "a";
-        	var posicionMiIndex = MiIndexOf(cadena3,caracter);
-        	/*alert(posicionMiIndex);*/
         	
         	/*------------------------------------------------------------*/
         	
@@ -98,11 +96,6 @@
         		return posicion;
         	}
         	
-        	var cadena3="Hola holita";
-        	var caracter = "a";
-        	var posicionMiLastIndex = MiLastIndexOf(cadena3,caracter);
-        	/*alert(posicionMiLastIndex);*/
-        	
         	/*------------------------------------------------------------*/
         	
         	/*Substring*/
@@ -117,15 +110,8 @@
         		}
         		return cadenaExtraida;
         	}
-        	var cadena4="Hola holita";
-        	var posIni = 2;
-        	var posFin = 6;
-        	var MiCadenaExtraida = MiSubstring(cadena4,posIni,posFin);
-        	
-        	/*alert(MiCadenaExtraida);*/
         	
         	/*------------------------------------------------------------*/
-        	
         	
         	/*MiConcat*/
         	
@@ -159,15 +145,7 @@
         		}
         		return array3;
         	}
-        	/*
-        	var array1 = [1, 2, 3];
-        	var array2 = [1, 2, 3];
-        	
-        	var array3 = MiConcat(array1,array2);
-        	
-        	for (var index = 0; index < array3.length;index++){
-        		alert(array3[index]);
-        	}*/
+        
         	/*------------------------------------------------------------*/
         	//reverse
         	
@@ -186,14 +164,7 @@
      		}
      		return array2;
      	}
-     	/*
-     	var dias = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
-     	var array=miReverse(dias);
-     	for (var index = 0; index < array.length;index++){
-        		alert(array[index]);
-        }*/
-        	
-        	
+     		
         	//reverseCadena
         	
         	function miReverseCadena(cadena){
@@ -211,17 +182,30 @@
 	     		}
 	     		return palabra;
      		}
-     	var dias = "Lunes";
-     	var cadenaRevertida = miReverseCadena(dias);
-     	alert(cadenaRevertida);
+	     
+     	
         </script>
+    
+</head>
+
+
+
+<body>
+        <h1>FUNCIONES PROPIAS</h1><hr /><br />
+        
+        <input type="text" id="nombre" style="color:#BDBDBD; font-style:italic" value="introduce una cadena"/>
+        <input type="button" value="Length" onclick="miLength()" /><br />
+        
+        <input type="text" id="cadenaCharAt" style="color:#BDBDBD; font-style:italic" value="Cadena"/>
+        <input type="text" id="posicionCharAt" style="color:#BDBDBD; font-style:italic" value="posicion"/>
+        <input type="button" value="CharAt" onclick="miCharAt()" /> <br />
+        
+        <input type="text" id="cadenaIndexOf" style="color:#BDBDBD; font-style:italic" value="Introduce la cadena"/>        
+        <input type="text" id="caracterIndexOf" style="color:#BDBDBD; font-style:italic" value="Introduce el caracter"/>
+        <input type="button" value="IndexOf" onclick="miIndexOf()"/><br />
         
         
         
-        
-    </head>
-    <body>
-        <h1>New Web Project Page</h1>
-    </body>
+</body>
 </html>
 
