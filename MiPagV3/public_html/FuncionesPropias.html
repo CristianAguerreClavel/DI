@@ -7,11 +7,139 @@
         
         <script type="text/javascript">
         	
+        	
+        	
+        	function errorCadenaVacia(){
+        		var error = false; 
+        		var campoNombre = document.getElementById("cadena");
+        		var cadenaTexto = campoNombre.value;
+        		
+        		if(cadenaTexto == "" || cadenaTexto == "Introduce una cadena")
+        		{
+        			error = true;
+        			alert("El campo introduce una cadena esta vacio");
+        			return error;
+        		}
+        		
+        	}
+        	
+        	function errorParametro1(){
+        		var error = false; 
+        		var campoNombre = document.getElementById("parametro1");
+        		var cadenaTexto = campoNombre.value;
+        		
+        		if(cadenaTexto == "" || cadenaTexto == "Introduce el parametro 1")
+        		{
+        			error = true;
+        			alert("Esta funcion requiere del primer parametro");
+        			return error;
+        		}
+        	}
+        	function errorParametro2(){
+        		var error = false; 
+        		var campoNombre = document.getElementById("parametro2");
+        		var cadenaTexto = campoNombre.value;
+        		
+        		if(cadenaTexto == "" || cadenaTexto == "Introduce el parametro 2")
+        		{
+        			error = true;
+        			return error;
+        		}
+        	}
+        	
+        	function esNumeroCadena(){
+        		var error = false; 
+        		var campoNombre = document.getElementById("cadena");
+        		var cadenaTexto = campoNombre.value;
+        		
+        		if(!isNaN(cadenaTexto)){
+        			error = true;
+        			alert("El contenido no puede ser un numero");
+        			return error;
+        		}
+        		
+        	}
+        	
+        	function esNumeroP1(){
+        		var error = false; 
+        		var campoNombre = document.getElementById("parametro1");
+        		var cadenaTexto = campoNombre.value;
+        		
+        		if(!isNaN(cadenaTexto)){
+        			error = true;
+        			alert("El contenido de parametro 1 no puede ser un numero");
+        			return error;
+        		}
+        		
+        	}
+        	
+        	function iniMayorFin(){
+        		var error = false; 
+        		var campoNombre = document.getElementById("parametro1");
+        		var cadenaTexto = campoNombre.value;
+        		var campoNombre2 = document.getElementById("parametro2");
+        		var cadenaTexto2 = campoNombre2.value;
+        		
+        		if(candenaTexto>cadenaTexto2)){
+        			error = true;
+        			alert("Parametro 1 no puede ser mayor que parametro2");
+        			return error;
+        		}
+        	}
+        	
+        	function esNumeroP2(){
+        		var error = false; 
+        		var campoNombre = document.getElementById("parametro2");
+        		var cadenaTexto = campoNombre.value;
+        		
+        		if(!isNaN(cadenaTexto)){
+        			error = true;
+        			alert("El contenido de parametro2 no puede ser un numero");
+        			return error;
+        		}
+        		
+        	}
+        	
+        	function esLetraP1(){
+        		var error = false; 
+        		var campoNombre = document.getElementById("parametro1");
+        		var cadenaTexto = campoNombre.value;
+        		
+        		if(isNaN(cadenaTexto)){
+        			error = true;
+        			alert("El contenido de parametro 1 no puede ser una letra");
+        			return error;
+        		}
+        		
+        	}
+        	
+        	function esLetraoP2(){
+        		var error = false; 
+        		var campoNombre = document.getElementById("parametro2");
+        		var cadenaTexto = campoNombre.value;
+        		
+        		if(isNaN(cadenaTexto)){
+        			error = true;
+        			alert("El contenido de parametro2 no puede ser una letra");
+        			return error;
+        		}
+        		
+        	}
+        	
+        	
+        	
+        	
         	/*Lenght propio*/
         	
         	function miLength(){
         		var campoNombre = document.getElementById("cadena");
         		var cadenaTexto = campoNombre.value;
+        		
+        		var vacio = errorCadenaVacia();
+        		if (vacio){
+        			return;
+        		}
+        		
         		var arrayCadena = cadenaTexto.split("");
         		var longitud = 0;
         		
@@ -38,6 +166,22 @@
         		var cadenaTexto = campoTexto.value;
         		var posicion = campoPosicion.value;
         		
+        		//comprobacion campoCadena
+        		var vacio = errorCadenaVacia();
+        		if (vacio){
+        			
+        			return;
+        		}
+        		//combrobacion campoParametro1
+        		var vacio2 = errorParametro1();
+        		if (vacio2){
+        			return;
+        		}
+        		//comprobacion es numero p1
+        		var esNum = esLetraP1();
+        		if(esNum){
+        			return;
+        		}
         		
         		var caracter="";
         		var arrayCadena = cadenaTexto.split("");
@@ -69,6 +213,22 @@
         		var caracter = campoCaracter.value;
         		var campoResultado = document.getElementById('resultado');
         		cambiarEstilo(campoResultado);
+				//comprobacion campoCadena
+        		var vacio = errorCadenaVacia();
+        		if (vacio){
+        			
+        			return;
+        		}
+        		//combrobacion campoParametro1
+        		var vacio2 = errorParametro1();
+        		if (vacio2){
+        			return;
+        		}
+        		//comprobacion es numero p1
+        		var esNum = esNumeroP1();
+        		if(esNum){
+        			return;
+        		}
 
         		var posicion = 0;
         		var longitud = 0;
@@ -106,6 +266,18 @@
         		var campoResultado = document.getElementById('resultado');
         		cambiarEstilo(campoResultado);
         		
+        		//comprobacion campoCadena
+        		var vacio = errorCadenaVacia();
+        		if (vacio){
+        			
+        			return;
+        		}
+        		//combrobacion campoParametro1
+        		var vacio2 = errorParametro1();
+        		if (vacio2){
+        			return;
+        		}
+        		
         		var posicion = 0;
         		var longitud = 0; 
         		
@@ -138,6 +310,27 @@
         		var campoResultado = document.getElementById('resultado');
         		cambiarEstilo(campoResultado);
         		
+        		//comprobacion campoCadena
+        		var vacio = errorCadenaVacia();
+        		if (vacio){
+        			
+        			return;
+        		}
+        		//combrobacion campoParametro1
+        		var vacio2 = errorParametro1();
+        		if (vacio2){
+        			
+        			return;
+        		}
+        		//combrobacion campoParametro1
+        		var vacio3 = errorParametro2();
+        		if (vacio3){
+        			
+        			return;
+        		}
+        		if(iniMayorFin(){
+        			return;
+        		}
         		var cadenaExtraida = "";
         		var longitud = 0;
         		
@@ -197,7 +390,20 @@
      		for(var i in array){
      			longitud++;
      		}
-     		alert(longitud);
+     		
+     		//comprobacion campoCadena
+        		var vacio = errorCadenaVacia();
+        		if (vacio){
+        			
+        			return;
+        		}
+        		//combrobacion campoParametro1
+        		var vacio2 = errorParametro1();
+        		if (vacio2){
+        			
+        			return;
+        		}
+     		
      		var array2=new Array(longitud);
      		
      		var a=longitud-1;
@@ -211,9 +417,20 @@
         	//reverseCadena
         	
         	function miReverseCadena(){
-	     		var campoCadena = document.getElementById("cadenaReverse");
+	     		var campoCadena = document.getElementById("cadena");
 	     		var cadena = campoCadena.value;
 	     		var longitud=0;
+	     		var campoResultado = document.getElementById('resultado');
+        		cambiarEstilo(campoResultado);
+	     		
+	     		//comprobacion campoCadena
+        		var vacio = errorCadenaVacia();
+        		if (vacio){
+        			
+        			return;
+        		}
+        		
+	     		
 	     		for(var i in cadena){
 	     			longitud++;
 	     		}
@@ -225,8 +442,8 @@
 	     			palabra+=cadena[a];
 	     			/*alert(palabra);*/
 	     		}
-	     		alert(palabra);
-	     		return palabra;
+	     		campoResultado.value = palabra;
+	     		//return palabra;
      		}
 	     
 	     function miSplitC(){
