@@ -8,11 +8,13 @@
 		<script language="JavaScript">
 			
 			var cNombre="Nombre";
-			var cApellido="Apellidos"
+			var cApellido="Apellidos";
+			var cDireccion = "Introduce la direccion";
 			
 			function validacionCampos(){
 				var nombre = document.getElementById("nombre").value;
 				var apellido = document.getElementById('apellido').value;
+				var direccion = document.getElementById('direccion').value;
 				
 				if(apellido == cApellido){
 					var apellidoError = document.getElementById('apellidoR');
@@ -25,6 +27,12 @@
 					nombreError.value = "Introduzca un nombre";
 				}
 				
+				if(direccion == cDireccion){
+					var direccionError = document.getElementById('direccionR');
+					direccionError.style = "color:RED;font-style:italic"
+					direccionError.value = "Introduzca una direccion";
+				}
+				
 			}
 			
 			function obtencionDatos(){
@@ -32,11 +40,12 @@
 				/*------------------------------------------------------*/
 				var nombre = document.getElementById("nombre").value;
 				var apellido = document.getElementById('apellido').value;
-				//var direccion = document.getElementById('direccion').value;
+				var direccion = document.getElementById('direccion').value;
 				
 				var elementos = document.getElementsByName("rol");//RadioButton
 					
-					
+				//alert(direccion);
+				
 								
 				//SET DE VALORES RECIBIDOS
 				/*------------------------------------------------------------*/
@@ -44,7 +53,7 @@
 				document.getElementById('apellidoR').value = apellido;
 				var rolR = document.getElementById('rolR');
 				var aux ="";
-				//document.getElementById('direcionR').value = (text)direccion;
+				var direccionR = document.getElementById('direccionR').value = direccion;
 				
 				for(var i=0; i<elementos.length; i++) {//Comprobacion del elemento selecionado en el radioButoon
 					 if(elementos[i].checked){
