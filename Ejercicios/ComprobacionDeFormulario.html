@@ -15,20 +15,24 @@
 				var nombre = document.getElementById("nombre").value;
 				var apellido = document.getElementById('apellido').value;
 				var direccion = document.getElementById('direccion').value;
-				
+				var apellidoError = document.getElementById('apellidoR');
+				apellidoError.style = "color:black;font-style:normal";
+				var nombreError = document.getElementById('nombreR');
+				nombreError.style = "color:black;font-style:normal";
+				var direccionError = document.getElementById('direccionR');
+				direccionError.style = "color:black;font-style:normal"
 				if(apellido == cApellido){
-					var apellidoError = document.getElementById('apellidoR');
 					apellidoError.style = "color:RED;font-style:italic"
 					apellidoError.value = "Introduzca un apellido";
 				}
+				
 				if(nombre == cNombre){
-					var nombreError = document.getElementById('nombreR');
 					nombreError.style = "color:RED;font-style:italic"
 					nombreError.value = "Introduzca un nombre";
 				}
 				
 				if(direccion == cDireccion){
-					var direccionError = document.getElementById('direccionR');
+					
 					direccionError.style = "color:RED;font-style:italic"
 					direccionError.value = "Introduzca una direccion";
 				}
