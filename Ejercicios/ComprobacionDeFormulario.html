@@ -32,7 +32,6 @@
 					direccionError.style = "color:RED;font-style:italic"
 					direccionError.value = "Introduzca una direccion";
 				}
-				
 			}
 			
 			function obtencionDatos(){
@@ -66,7 +65,7 @@
 				//COMPORBACION DE LOS CHECKBOX
 				/*-------------------------------------------------------------------*/
 				var aficion = document.getElementById('aficionesR')
-				var elemento = document.getElementById("futbol");
+				/*var elemento = document.getElementById("futbol");
 				aficion.value = "";
 				if(elemento.checked){
 					aficion.value += " "+elemento.value;
@@ -78,7 +77,18 @@
 				elemento = document.getElementById("natacion");
 				if( elemento.checked){
 					aficion.value += " "+elemento.value;
-				}
+				}*/
+				
+				var inp = document.getElementsByTagName("input");
+				//BY NEREA
+				for (var i = 0; i<inp.length;i++){
+				 	if(inp[i].type=="checkbox"){
+				 		if(inp[i].checked){
+				 			aficion.value += " "+inp[i].value;
+				 		}
+				 	}
+				}	
+				
 				
 				//COMPORBACION DE LA LISTA DE PAISES
 				/*-----------------------------------------------------------------------*/
@@ -87,7 +97,7 @@
 				 
 				// Obtener el valor de la opción seleccionada
 				var valorSeleccionado = lista.options[lista.selectedIndex].value;
-				 pais.value = valorSeleccionado;
+				pais.value = valorSeleccionado;
 				 
 				 validacionCampos();
 			}
@@ -102,7 +112,11 @@
 		    	 elemento.style.color = 'red';
 		    	 elemento.style.fontStyle = 'italic';
 		    }
-			
+		    
+			function estiloDifuminado(elemento){
+				elemento.style.color = '#585858';
+				elemento.style.fontStyle = 'italic';
+			}
 		</script>
 		
 	</head>
@@ -110,7 +124,7 @@
 		<form>
 			<fieldset>
 				<legend><font color="#DF0101"><b>DATOS PERSONALES</b></font></legend>
-				<input type="text" id="nombre" value="Nombre"  style="color:#585858;font-style:italic" onfocus="if(this.value=='Nombre'){this.value='';cambiarEstilo(this)}"/> 
+				<input type="text" id="nombre" value="Nombre" style="color:#585858;font-style:italic" onfocus="if(this.value=='Nombre'){this.value='';cambiarEstilo(this)}"/> 
 				<input type="text" id="apellido" value="Apellidos"  style="color:#585858;font-style:italic" onfocus="if(this.value=='Apellidos'){this.value='';cambiarEstilo(this)}"/> 
 				<select id="opciones" name="opciones">
 				  <option value="España">España</option>
@@ -125,7 +139,7 @@
 				<br />
 				<input type="radio" value="alumno" name="rol" id="rolAlumno"/> Alumno <br />
 				<input type="radio" value="profesor" name="rol" id="rolProfesor"/> Profesor <br />
-				<input type="radio" value="ninguno" name="rol" id="rolNinguno"/> Ninguno de los anteriores
+				<input type="radio"  value="ninguno" name="rol" id="rolNinguno"/> Ninguno de los anteriores
 			</fieldset>
 			
 			<fieldset>
@@ -146,6 +160,7 @@
 				Aficiones<input type="text" id="aficionesR" /><br />
 				
 				<input type="button" value="Validar" onclick="obtencionDatos()" />
+				<input type="reset" value="Resetear">
 				<input type="button" value="Ver Codigo" onclick="window.location='codigoComprobacionDeFormulario.html'"/>
 				
 			</fieldset>
