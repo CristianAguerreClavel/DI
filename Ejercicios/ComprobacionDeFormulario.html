@@ -11,6 +11,18 @@
 			var cApellido="Apellidos";
 			var cDireccion = "Introduce la direccion";
 			
+			
+			function resetear(){
+				var nombre = document.getElementById("nombre");
+				var apellido = document.getElementById('apellido');
+				var direccion = document.getElementById('direccion');
+				document.forms[0].reset();
+				
+				nombre.style = "color:#585858;font-style:italic";
+				direccion.style = "color:#585858;font-style:italic";
+				apellido.style = "color:#585858;font-style:italic";
+			}
+			
 			function validacionCampos(){
 				var nombre = document.getElementById("nombre").value;
 				var apellido = document.getElementById('apellido').value;
@@ -20,20 +32,19 @@
 				var nombreError = document.getElementById('nombreR');
 				nombreError.style = "color:black;font-style:normal";
 				var direccionError = document.getElementById('direccionR');
-				direccionError.style = "color:black;font-style:normal"
+				direccionError.style = "color:black;font-style:normal";
 				if(apellido == cApellido){
-					apellidoError.style = "color:RED;font-style:italic"
+					apellidoError.style = "color:RED;font-style:italic";
 					apellidoError.value = "Introduzca un apellido";
 				}
 				
 				if(nombre == cNombre){
-					nombreError.style = "color:RED;font-style:italic"
+					nombreError.style = "color:RED;font-style:italic";
 					nombreError.value = "Introduzca un nombre";
 				}
 				
 				if(direccion == cDireccion){
-					
-					direccionError.style = "color:RED;font-style:italic"
+					direccionError.style = "color:RED;font-style:italic";
 					direccionError.value = "Introduzca una direccion";
 				}
 			}
@@ -164,7 +175,7 @@
 				Aficiones<input type="text" id="aficionesR" /><br />
 				
 				<input type="button" value="Validar" onclick="obtencionDatos()" />
-				<input type="reset" value="Resetear">
+				<input type="button" value="Resetear" onclick="resetear()">
 				<input type="button" value="Ver Codigo" onclick="window.location='codigoComprobacionDeFormulario.html'"/>
 				
 			</fieldset>

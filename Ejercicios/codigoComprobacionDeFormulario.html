@@ -17,29 +17,45 @@
 		&lt;script language="JavaScript"&gt;
 			
 			var cNombre="Nombre";
-			var cApellido="Apellidos"
+			var cApellido="Apellidos";
 			var cDireccion = "Introduce la direccion";
+			
+			
+			function resetear(){
+				var nombre = document.getElementById("nombre");
+				var apellido = document.getElementById('apellido');
+				var direccion = document.getElementById('direccion');
+				document.forms[0].reset();
+				
+				nombre.style = "color:#585858;font-style:italic";
+				direccion.style = "color:#585858;font-style:italic";
+				apellido.style = "color:#585858;font-style:italic";
+			}
 			
 			function validacionCampos(){
 				var nombre = document.getElementById("nombre").value;
 				var apellido = document.getElementById('apellido').value;
-				
+				var direccion = document.getElementById('direccion').value;
+				var apellidoError = document.getElementById('apellidoR');
+				apellidoError.style = "color:black;font-style:normal";
+				var nombreError = document.getElementById('nombreR');
+				nombreError.style = "color:black;font-style:normal";
+				var direccionError = document.getElementById('direccionR');
+				direccionError.style = "color:black;font-style:normal";
 				if(apellido == cApellido){
-					var apellidoError = document.getElementById('apellidoR');
-					apellidoError.style = "color:RED;font-style:italic"
+					apellidoError.style = "color:RED;font-style:italic";
 					apellidoError.value = "Introduzca un apellido";
 				}
+				
 				if(nombre == cNombre){
-					var nombreError = document.getElementById('nombreR');
-					nombreError.style = "color:RED;font-style:italic"
+					nombreError.style = "color:RED;font-style:italic";
 					nombreError.value = "Introduzca un nombre";
 				}
+				
 				if(direccion == cDireccion){
-					var direccionError = document.getElementById('direccionR');
-					direccionError.style = "color:RED;font-style:italic"
+					direccionError.style = "color:RED;font-style:italic";
 					direccionError.value = "Introduzca una direccion";
 				}
-				
 			}
 			
 			function obtencionDatos(){
@@ -51,7 +67,8 @@
 				
 				var elementos = document.getElementsByName("rol");//RadioButton
 					
-					
+				//alert(direccion);
+				
 								
 				//SET DE VALORES RECIBIDOS
 				/*------------------------------------------------------------*/
@@ -59,7 +76,7 @@
 				document.getElementById('apellidoR').value = apellido;
 				var rolR = document.getElementById('rolR');
 				var aux ="";
-				document.getElementById('direccionR').value = (text)direccion;
+				var direccionR = document.getElementById('direccionR').value = direccion;
 				
 				for(var i=0; i&lt;elementos.length; i++) {//Comprobacion del elemento selecionado en el radioButoon
 					 if(elementos[i].checked){
@@ -72,7 +89,7 @@
 				//COMPORBACION DE LOS CHECKBOX
 				/*-------------------------------------------------------------------*/
 				var aficion = document.getElementById('aficionesR')
-				var elemento = document.getElementById("futbol");
+				/*var elemento = document.getElementById("futbol");
 				aficion.value = "";
 				if(elemento.checked){
 					aficion.value += " "+elemento.value;
@@ -84,7 +101,18 @@
 				elemento = document.getElementById("natacion");
 				if( elemento.checked){
 					aficion.value += " "+elemento.value;
-				}
+				}*/
+				
+				var inp = document.getElementsByTagName("input");
+				//BY NEREA
+				for (var i = 0; i&lt;inp.length;i++){
+				 	if(inp[i].type=="checkbox"){
+				 		if(inp[i].checked){
+				 			aficion.value += " "+inp[i].value;
+				 		}
+				 	}
+				}	
+				
 				
 				//COMPORBACION DE LA LISTA DE PAISES
 				/*-----------------------------------------------------------------------*/
@@ -93,7 +121,7 @@
 				 
 				// Obtener el valor de la opción seleccionada
 				var valorSeleccionado = lista.options[lista.selectedIndex].value;
-				 pais.value = valorSeleccionado;
+				pais.value = valorSeleccionado;
 				 
 				 validacionCampos();
 			}
@@ -108,7 +136,11 @@
 		    	 elemento.style.color = 'red';
 		    	 elemento.style.fontStyle = 'italic';
 		    }
-			
+		    
+			function estiloDifuminado(elemento){
+				elemento.style.color = '#585858';
+				elemento.style.fontStyle = 'italic';
+			}
 		&lt;/script&gt;
 		
 	&lt;/head&gt;
@@ -116,7 +148,7 @@
 		&lt;form&gt;
 			&lt;fieldset&gt;
 				&lt;legend&gt;&lt;font color="#DF0101"&gt;&lt;b&gt;DATOS PERSONALES&lt;/b&gt;&lt;/font&gt;&lt;/legend&gt;
-				&lt;input type="text" id="nombre" value="Nombre"  style="color:#585858;font-style:italic" onfocus="if(this.value=='Nombre'){this.value='';cambiarEstilo(this)}"/&gt; 
+				&lt;input type="text" id="nombre" value="Nombre" style="color:#585858;font-style:italic" onfocus="if(this.value=='Nombre'){this.value='';cambiarEstilo(this)}"/&gt; 
 				&lt;input type="text" id="apellido" value="Apellidos"  style="color:#585858;font-style:italic" onfocus="if(this.value=='Apellidos'){this.value='';cambiarEstilo(this)}"/&gt; 
 				&lt;select id="opciones" name="opciones"&gt;
 				  &lt;option value="España"&gt;España&lt;/option&gt;
@@ -131,7 +163,7 @@
 				&lt;br /&gt;
 				&lt;input type="radio" value="alumno" name="rol" id="rolAlumno"/&gt; Alumno &lt;br /&gt;
 				&lt;input type="radio" value="profesor" name="rol" id="rolProfesor"/&gt; Profesor &lt;br /&gt;
-				&lt;input type="radio" value="ninguno" name="rol" id="rolNinguno"/&gt; Ninguno de los anteriores
+				&lt;input type="radio"  value="ninguno" name="rol" id="rolNinguno"/&gt; Ninguno de los anteriores
 			&lt;/fieldset&gt;
 			
 			&lt;fieldset&gt;
@@ -152,6 +184,7 @@
 				Aficiones&lt;input type="text" id="aficionesR" /&gt;&lt;br /&gt;
 				
 				&lt;input type="button" value="Validar" onclick="obtencionDatos()" /&gt;
+				&lt;input type="button" value="Resetear" onclick="resetear()"&gt;
 				&lt;input type="button" value="Ver Codigo" onclick="window.location='codigoComprobacionDeFormulario.html'"/&gt;
 				
 			&lt;/fieldset&gt;
@@ -159,6 +192,8 @@
 		&lt;/form&gt;
 	&lt;/body&gt;
 &lt;/html&gt;
+
+
 		</pre>
 		<input type="button" value="Ver Ejecucion" onclick="window.location='ComprobacionDeFormulario.html'"/>
 	</body>
