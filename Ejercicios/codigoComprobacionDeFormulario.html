@@ -18,6 +18,7 @@
 			
 			var cNombre="Nombre";
 			var cApellido="Apellidos"
+			var cDireccion = "Introduce la direccion";
 			
 			function validacionCampos(){
 				var nombre = document.getElementById("nombre").value;
@@ -33,6 +34,11 @@
 					nombreError.style = "color:RED;font-style:italic"
 					nombreError.value = "Introduzca un nombre";
 				}
+				if(direccion == cDireccion){
+					var direccionError = document.getElementById('direccionR');
+					direccionError.style = "color:RED;font-style:italic"
+					direccionError.value = "Introduzca una direccion";
+				}
 				
 			}
 			
@@ -41,7 +47,7 @@
 				/*------------------------------------------------------*/
 				var nombre = document.getElementById("nombre").value;
 				var apellido = document.getElementById('apellido').value;
-				//var direccion = document.getElementById('direccion').value;
+				var direccion = document.getElementById('direccion').value;
 				
 				var elementos = document.getElementsByName("rol");//RadioButton
 					
@@ -53,7 +59,7 @@
 				document.getElementById('apellidoR').value = apellido;
 				var rolR = document.getElementById('rolR');
 				var aux ="";
-				//document.getElementById('direcionR').value = (text)direccion;
+				document.getElementById('direccionR').value = (text)direccion;
 				
 				for(var i=0; i&lt;elementos.length; i++) {//Comprobacion del elemento selecionado en el radioButoon
 					 if(elementos[i].checked){
@@ -154,6 +160,7 @@
 	&lt;/body&gt;
 &lt;/html&gt;
 		</pre>
+		<input type="button" value="Ver Ejecucion" onclick="window.location='ComprobacionDeFormulario.html'"/>
 	</body>
 </html>
 
