@@ -16,14 +16,19 @@
 				var nombre = document.getElementById("nombre");
 				var apellido = document.getElementById('apellido');
 				var direccion = document.getElementById('direccion');
+				var pais = document.getElementById('paisR');
 				document.forms[0].reset();
 				
 				nombre.style = "color:#585858;font-style:italic";
 				direccion.style = "color:#585858;font-style:italic";
 				apellido.style = "color:#585858;font-style:italic";
+				pais.style = "color:#585858;font-style:italic";
+				
 			}
 			
 			function validacionCampos(){
+				var pais = document.getElementById('paisR');
+				var indice = document.getElementById("opciones").selectedIndex;
 				var nombre = document.getElementById("nombre").value;
 				var apellido = document.getElementById('apellido').value;
 				var direccion = document.getElementById('direccion').value;
@@ -47,9 +52,17 @@
 					direccionError.style = "color:RED;font-style:italic";
 					direccionError.value = "Introduzca una direccion";
 				}
+				
+				
+				if( indice == null || indice == 0 ) {
+					estiloError(pais);
+				    pais.value = "Seleccione un pais de la lista"
+				}
+				
 			}
 			
 			function obtencionDatos(){
+				
 				//OBTENCION DE LOS VALORES
 				/*------------------------------------------------------*/
 				var nombre = document.getElementById("nombre").value;
@@ -109,7 +122,8 @@
 				/*-----------------------------------------------------------------------*/
 				var pais = document.getElementById('paisR');
 				var lista = document.getElementById("opciones");
-				 
+				
+				cambiarEstilo(pais); 
 				// Obtener el valor de la opción seleccionada
 				var valorSeleccionado = lista.options[lista.selectedIndex].value;
 				pais.value = valorSeleccionado;
@@ -132,6 +146,25 @@
 				elemento.style.color = '#585858';
 				elemento.style.fontStyle = 'italic';
 			}
+			
+			function tamanoMax(elEvento, campo, longitud){
+				//var tecla = false;
+				var evento = elEvento || window.event;
+  				var codigoCaracter = evento.charCode || evento.keyCode;
+  				var teclas_especiales = [8, 37, 39, 46];
+  				
+  				for (var i in teclas_especiales)
+  				{
+					if(codigoCaracter == teclas_especiales[i])
+						return true;
+						break;
+				}
+					
+				if (campo.value.length >= longitud)
+					return false;
+					
+				return true;
+			}
 		</script>
 		
 	</head>
@@ -142,13 +175,15 @@
 				<input type="text" id="nombre" value="Nombre" style="color:#585858;font-style:italic" onfocus="if(this.value=='Nombre'){this.value='';cambiarEstilo(this)}"/> 
 				<input type="text" id="apellido" value="Apellidos"  style="color:#585858;font-style:italic" onfocus="if(this.value=='Apellidos'){this.value='';cambiarEstilo(this)}"/> 
 				<select id="opciones" name="opciones">
-				  <option value="España">España</option>
-				  <option value="Fracia">Francia</option>
-				  <option value="Inglaterra">Inglaterra</option>
-				  <option value="Alemania">Alemania</option>
+					<option value="" style="font-style:italic">Selecione un Pais</option>
+					
+					<option value="España">España</option>
+				    <option value="Francia">Francia</option>
+				    <option value="Inglaterra">Inglaterra</option>
+				    <option value="Alemania">Alemania</option>
 				</select>
 				<br />
-				<br /><textarea id="direccion" style="color:#585858;font-style:italic" onfocus="this.value='';cambiarEstilo(this)">Introduce la direccion</textarea>
+				<br /><textarea id="direccion" style="color:#585858;font-style:italic" onfocus="this.value='';cambiarEstilo(this)" onkeypress="return tamanoMax(event,this,5)">Introduce la direccion</textarea>
 				<br />
 				Funcion en la empresa: 
 				<br />
@@ -167,13 +202,56 @@
 			<hr /><hr /><hr />
 			<fieldset>
 				<legend><font color="#DF0101"><b>OBTENCION DE DATOS</b></font></legend>
-				Nombre<input type="text" id="nombreR" />
-				Apellidos<input type="text" id="apellidoR" />
-				Pais<input type="text" id="paisR" /><br />
-				Direccion<input type="text" id="direccionR" /><br />
-				Funcion<input type="text" id="rolR" /><br />
-				Aficiones<input type="text" id="aficionesR" /><br />
-				
+				<table border="0">
+					<tr>
+						<td>
+							Nombre
+						</td>
+						<td>
+							<input type="text" id="nombreR" />
+						</td>
+						
+						<td>
+							Apellidos
+						</td>
+						<td>
+							<input type="text" id="apellidoR" />
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							Pais
+						</td>
+						<td>
+							<input type="text" id="paisR" />
+						</td>
+						
+						<td>
+							Direccion	
+						</td>
+						<td>
+							<input type="text" id="direccionR" />	
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							Funcion
+						</td>
+						<td>
+							<input type="text" id="rolR" />
+						</td>
+						
+						<td>
+							Aficiones
+						</td>
+						<td>
+							<input type="text" id="aficionesR" />
+						</td>
+					</tr>
+				</table>
+				<br />
 				<input type="button" value="Validar" onclick="obtencionDatos()" />
 				<input type="button" value="Resetear" onclick="resetear()">
 				<input type="button" value="Ver Codigo" onclick="window.location='codigoComprobacionDeFormulario.html'"/>
